@@ -380,9 +380,9 @@ export default function Home() {
     if (c && CURRENCIES.some(curr => curr.code === c)) setCurrency(c);
     if (po) setPoInvoiceVolume(Math.min(500000, Math.max(0, parseInt(po, 10) || DEFAULT_VALUES.poInvoiceVolume)));
     if (npo) setNonPoInvoiceVolume(Math.min(500000, Math.max(0, parseInt(npo, 10) || DEFAULT_VALUES.nonPoInvoiceVolume)));
-    if (days) setCurrentDaysToProcess(Math.min(30, Math.max(1, parseInt(days, 10) || DEFAULT_VALUES.currentDaysToProcess)));
-    if (manual) setPoManualInterventionPct(Math.min(100, Math.max(0, parseInt(manual, 10) || DEFAULT_VALUES.poManualInterventionPct)));
-    if (spend) setAnnualPayablesSpend(Math.min(500000000, Math.max(1000000, parseInt(spend, 10) || DEFAULT_VALUES.annualPayablesSpend)));
+    if (days) setCurrentDaysToProcess(Math.min(20, Math.max(1, parseFloat(days) || DEFAULT_VALUES.currentDaysToProcess)));
+    if (manual) setPoManualInterventionPct(Math.min(80, Math.max(0, parseInt(manual, 10) || DEFAULT_VALUES.poManualInterventionPct)));
+    if (spend) setAnnualPayablesSpend(Math.min(2000000000, Math.max(5000000, parseInt(spend, 10) || DEFAULT_VALUES.annualPayablesSpend)));
 
     setIsInitialized(true);
   }, []);
@@ -677,6 +677,7 @@ export default function Home() {
                   </div>
                   <Slider value={[nonPoInvoiceVolume]} onValueChange={handleNonPoVolumeChange} min={0} max={500000} step={5000} className="w-full" />
                   <div className="flex justify-between text-xs text-gray-500"><span>0</span><span>500,000+</span></div>
+                  <p className="text-xs text-gray-500 mt-1">Non-PO invoices account for {Math.round((nonPoInvoiceVolume / (poInvoiceVolume + nonPoInvoiceVolume)) * 100)}% of total invoice volume.</p>
                 </div>
 
                 <div className="space-y-3">
@@ -684,15 +685,21 @@ export default function Home() {
                     <span className="w-2 h-2 mt-2 rounded-full bg-primary flex-shrink-0" />
                     <div className="flex-1">
                       <label className="block text-sm font-medium text-[#2d4242]">Current days to process an invoice</label>
-                      <p className="text-xs text-gray-500 mt-0.5">Average time from receipt to approval</p>
+                      <p className="text-xs text-gray-500 mt-0.5">Most AP teams process invoices in 7–10 days. Best-in-class teams do it in 1–3.</p>
                     </div>
                   </div>
                   <div className="bg-gray-50 rounded-lg px-4 py-3 flex items-center justify-between border border-gray-200">
-                    <span className="font-mono text-lg font-semibold text-[#2d4242]">{currentDaysToProcess}</span>
+                    <span className="font-mono text-lg font-semibold text-[#2d4242]">{currentDaysToProcess.toFixed(1)}</span>
                     <span className="text-sm text-gray-500">days</span>
                   </div>
-                  <Slider value={[currentDaysToProcess]} onValueChange={handleDaysChange} min={1} max={30} step={1} className="w-full" />
-                  <div className="flex justify-between text-xs text-gray-500"><span>1 day</span><span>30 days</span></div>
+                  <Slider value={[currentDaysToProcess]} onValueChange={handleDaysChange} min={1} max={20} step={0.1} className="w-full" />
+                  <div className="flex justify-between text-xs text-gray-500">
+                    <span>1.0 <span className="text-[10px] text-gray-400">Best (Non-PO)</span></span>
+                    <span>2.6 <span className="text-[10px] text-gray-400">Best (PO)</span></span>
+                    <span>6.3 <span className="text-[10px] text-gray-400">Avg (Non-PO)</span></span>
+                    <span>6.7 <span className="text-[10px] text-gray-400">Avg (PO)</span></span>
+                    <span>20</span>
+                  </div>
                 </div>
 
                 <div className="space-y-3">
@@ -700,15 +707,20 @@ export default function Home() {
                     <span className="w-2 h-2 mt-2 rounded-full bg-primary flex-shrink-0" />
                     <div className="flex-1">
                       <label className="block text-sm font-medium text-[#2d4242]">PO invoices requiring manual intervention</label>
-                      <p className="text-xs text-gray-500 mt-0.5">Percentage of PO invoices needing human touch</p>
+                      <p className="text-xs text-gray-500 mt-0.5">Reducing manual intervention increases touchless, fully automated invoice processing.</p>
                     </div>
                   </div>
                   <div className="bg-gray-50 rounded-lg px-4 py-3 flex items-center justify-between border border-gray-200">
                     <span className="font-mono text-lg font-semibold text-[#2d4242]">{poManualInterventionPct}%</span>
-                    <span className="text-sm text-gray-500">manual</span>
+                    <span className="text-sm text-gray-500">Current touchless rate: {100 - poManualInterventionPct}%</span>
                   </div>
-                  <Slider value={[poManualInterventionPct]} onValueChange={handleManualInterventionChange} min={0} max={100} step={1} className="w-full" />
-                  <div className="flex justify-between text-xs text-gray-500"><span>0% (fully automated)</span><span>100% (all manual)</span></div>
+                  <Slider value={[poManualInterventionPct]} onValueChange={handleManualInterventionChange} min={0} max={80} step={1} className="w-full" />
+                  <div className="flex justify-between text-xs text-gray-500">
+                    <span>0%</span>
+                    <span>6% <span className="text-[10px] text-gray-400">Best</span></span>
+                    <span>33% <span className="text-[10px] text-gray-400">Avg</span></span>
+                    <span>80%</span>
+                  </div>
                 </div>
 
                 <div className="space-y-3">
@@ -716,14 +728,14 @@ export default function Home() {
                     <span className="w-2 h-2 mt-2 rounded-full bg-primary flex-shrink-0" />
                     <div className="flex-1">
                       <label className="block text-sm font-medium text-[#2d4242]">Annual payables spend</label>
-                      <p className="text-xs text-gray-500 mt-0.5">Total value of invoices paid annually</p>
+                      <p className="text-xs text-gray-500 mt-0.5">Used to estimate annual payment processing savings.</p>
                     </div>
                   </div>
                   <div className="bg-gray-50 rounded-lg px-4 py-3 flex items-center justify-between border border-gray-200">
                     <span className="font-mono text-lg font-semibold text-[#2d4242]">{formatCurrency(annualPayablesSpend, currencySymbol)}</span>
                   </div>
-                  <Slider value={[annualPayablesSpend]} onValueChange={handleSpendChange} min={1000000} max={500000000} step={1000000} className="w-full" />
-                  <div className="flex justify-between text-xs text-gray-500"><span>{currencySymbol}1M</span><span>{currencySymbol}500M+</span></div>
+                  <Slider value={[annualPayablesSpend]} onValueChange={handleSpendChange} min={5000000} max={2000000000} step={5000000} className="w-full" />
+                  <div className="flex justify-between text-xs text-gray-500"><span>{currencySymbol}5M</span><span>{currencySymbol}2B+</span></div>
                 </div>
               </div>
             </div>
@@ -737,8 +749,8 @@ export default function Home() {
                   <div className="flex items-start gap-3 mb-3">
                     <span className="w-2 h-2 mt-2 rounded-full bg-primary flex-shrink-0" />
                     <div>
-                      <h4 className="text-sm font-medium text-[#2d4242]">Processing time reduced (PO invoices)</h4>
-                      <p className="text-xs text-gray-500">Days saved per invoice</p>
+                      <h4 className="text-sm font-medium text-[#2d4242]">Cycle time reduced (PO invoices)</h4>
+                      <p className="text-xs text-gray-500">Medius average → Best-in-class</p>
                     </div>
                   </div>
                   <div className="text-2xl md:text-3xl font-bold text-primary">
@@ -754,8 +766,8 @@ export default function Home() {
                   <div className="flex items-start gap-3 mb-3">
                     <span className="w-2 h-2 mt-2 rounded-full bg-primary flex-shrink-0" />
                     <div>
-                      <h4 className="text-sm font-medium text-[#2d4242]">Processing time reduced (Non-PO invoices)</h4>
-                      <p className="text-xs text-gray-500">Days saved per invoice</p>
+                      <h4 className="text-sm font-medium text-[#2d4242]">Cycle time reduced (Non-PO invoices)</h4>
+                      <p className="text-xs text-gray-500">Medius average → Best-in-class</p>
                     </div>
                   </div>
                   <div className="text-2xl md:text-3xl font-bold text-primary">
@@ -771,8 +783,8 @@ export default function Home() {
                   <div className="flex items-start gap-3 mb-3">
                     <span className="w-2 h-2 mt-2 rounded-full bg-primary flex-shrink-0" />
                     <div>
-                      <h4 className="text-sm font-medium text-[#2d4242]">More invoices processed touchlessly (PO)</h4>
-                      <p className="text-xs text-gray-500">Additional invoices automated per year</p>
+                      <h4 className="text-sm font-medium text-[#2d4242]">More invoices processed automatically (PO)</h4>
+                      <p className="text-xs text-gray-500">Medius average → Best-in-class</p>
                     </div>
                   </div>
                   <div className="text-2xl md:text-3xl font-bold text-primary mb-2">
@@ -810,7 +822,7 @@ export default function Home() {
                 </button>
 
                 <p className="text-xs text-gray-500 text-center">
-                  Ranges reflect Medius average vs best-in-class outcomes.
+                  Benchmarks based on millions of invoices processed by Medius customers globally.
                 </p>
               </div>
             </div>
