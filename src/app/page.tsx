@@ -281,7 +281,7 @@ function BenchmarkChart({
         </div>
         <div className="flex items-center gap-1.5">
           <span className="w-3 h-3 rounded-full bg-primary" />
-          <span className="text-[#2d4242]/70">Best in class</span>
+          <span className="text-[#2d4242]/70">Best-in-class</span>
         </div>
       </div>
     </div>
@@ -571,7 +571,7 @@ export default function Home() {
         </div>
         <div className="container mx-auto px-4">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#2d4242] text-center mb-4">
-            Are You Leaving Savings on the Table?
+            Are you leaving savings on the table?
           </h2>
           <p className="text-[#2d4242]/70 text-center max-w-2xl mx-auto mb-8 md:mb-12">
             Compare your AP KPIs to best-in-class Medius customers.
@@ -756,12 +756,20 @@ export default function Home() {
                     <span className="text-sm text-gray-500">days</span>
                   </div>
                   <Slider value={[currentDaysToProcess]} onValueChange={handleDaysChange} min={1} max={20} step={0.1} className="w-full" />
-                  <div className="flex justify-between text-xs text-gray-500">
-                    <span>1</span>
-                    <span className="hidden md:inline">2.6 <span className="text-[10px] text-gray-400">Best PO</span></span>
-                    <span className="hidden md:inline">6.3 <span className="text-[10px] text-gray-400">Avg NPO</span></span>
-                    <span className="hidden md:inline">6.7 <span className="text-[10px] text-gray-400">Avg PO</span></span>
-                    <span>20</span>
+                  <div className="relative h-6 mt-1 text-[10px] text-gray-500">
+                    <span className="absolute hidden lg:inline-block" style={{ left: '0%', transform: 'translateX(0%)' }}>
+                      1.0 <span className="text-[9px] text-gray-400">Best NPO</span>
+                    </span>
+                    <span className="absolute hidden lg:inline-block" style={{ left: '8.4%', transform: 'translateX(-50%)' }}>
+                      2.6 <span className="text-[9px] text-gray-400">Best PO</span>
+                    </span>
+                    <span className="absolute hidden md:inline-block" style={{ left: '27.9%', transform: 'translateX(-50%)' }}>
+                      6.3 <span className="text-[9px] text-gray-400">Avg NPO</span>
+                    </span>
+                    <span className="absolute hidden md:inline-block" style={{ left: '30%', transform: 'translateX(-50%)' }}>
+                      6.7 <span className="text-[9px] text-gray-400">Avg PO</span>
+                    </span>
+                    <span className="absolute" style={{ left: '100%', transform: 'translateX(-100%)' }}>20</span>
                   </div>
                 </div>
 
@@ -778,11 +786,15 @@ export default function Home() {
                     <span className="text-sm text-gray-500">Current touchless rate: {100 - poManualInterventionPct}%</span>
                   </div>
                   <Slider value={[poManualInterventionPct]} onValueChange={handleManualInterventionChange} min={0} max={80} step={1} className="w-full" />
-                  <div className="flex justify-between text-xs text-gray-500">
-                    <span>0%</span>
-                    <span>6% <span className="text-[10px] text-gray-400">Best</span></span>
-                    <span>33% <span className="text-[10px] text-gray-400">Avg</span></span>
-                    <span>80%</span>
+                  <div className="relative h-6 mt-1 text-[10px] text-gray-500">
+                    <span className="absolute" style={{ left: '0%', transform: 'translateX(0%)' }}>0%</span>
+                    <span className="absolute hidden md:inline-block" style={{ left: '7.5%', transform: 'translateX(-50%)' }}>
+                      6% <span className="text-[9px] text-gray-400">Best</span>
+                    </span>
+                    <span className="absolute hidden md:inline-block" style={{ left: '41.25%', transform: 'translateX(-50%)' }}>
+                      33% <span className="text-[9px] text-gray-400">Avg</span>
+                    </span>
+                    <span className="absolute" style={{ left: '100%', transform: 'translateX(-100%)' }}>80%</span>
                   </div>
                 </div>
 
@@ -890,12 +902,13 @@ export default function Home() {
                   <div className="relative aspect-video rounded-lg overflow-hidden shadow-md bg-gray-900">
                     <video
                       controls
+                      muted
                       preload="metadata"
                       className="w-full h-full"
                       poster="/images/medius-light-sand-background-6.jpg"
                     >
                       <source src="/videos/medius-customers.mp4" type="video/mp4" />
-                      Your browser does not support the video tag.
+                      Video loading…
                     </video>
                   </div>
                 </div>
@@ -930,34 +943,13 @@ export default function Home() {
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {/* Briggs Industrial Solutions */}
-            <div className="bg-gray-50 rounded-lg p-8 text-center flex flex-col items-center">
-              <div className="h-16 flex items-center justify-center mb-6">
-                <span className="text-xl font-bold text-[#2d4242]">Briggs Industrial Solutions</span>
-              </div>
-              <p className="text-sm text-[#2d4242]/80 mb-6 italic">
-                "Reduced invoice processing time by 70% while improving accuracy."
-              </p>
-              <a
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary font-medium text-sm hover:underline inline-flex items-center gap-1"
-              >
-                Read the case study →
-              </a>
-            </div>
-
             {/* PUMA */}
             <div className="bg-gray-50 rounded-lg p-8 text-center flex flex-col items-center">
-              <div className="h-16 flex items-center justify-center mb-6">
-                <span className="text-xl font-bold text-[#2d4242]">PUMA</span>
+              <div className="h-20 flex items-center justify-center mb-6">
+                <img src="/images/logos/puma.svg" alt="PUMA" className="max-h-16 w-auto" />
               </div>
-              <p className="text-sm text-[#2d4242]/80 mb-6 italic">
-                "Achieved 95% touchless processing across global operations."
-              </p>
               <a
-                href="#"
+                href="https://www.medius.com/resources/case-studies/puma-video/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary font-medium text-sm hover:underline inline-flex items-center gap-1"
@@ -968,14 +960,26 @@ export default function Home() {
 
             {/* WD-40 */}
             <div className="bg-gray-50 rounded-lg p-8 text-center flex flex-col items-center">
-              <div className="h-16 flex items-center justify-center mb-6">
-                <span className="text-xl font-bold text-[#2d4242]">WD-40</span>
+              <div className="h-20 flex items-center justify-center mb-6">
+                <img src="/images/logos/wd-40.png" alt="WD-40" className="max-h-16 w-auto" />
               </div>
-              <p className="text-sm text-[#2d4242]/80 mb-6 italic">
-                "Cut AP costs by 60% with full invoice automation."
-              </p>
               <a
-                href="#"
+                href="https://www.medius.com/resources/case-studies/wd-40-video/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary font-medium text-sm hover:underline inline-flex items-center gap-1"
+              >
+                Read the case study →
+              </a>
+            </div>
+
+            {/* Briggs Industrial */}
+            <div className="bg-gray-50 rounded-lg p-8 text-center flex flex-col items-center">
+              <div className="h-20 flex items-center justify-center mb-6">
+                <img src="/images/logos/briggs.png" alt="Briggs Industrial" className="max-h-16 w-auto" />
+              </div>
+              <a
+                href="https://www.medius.com/resources/case-studies/briggs-equipment-ap-automation/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary font-medium text-sm hover:underline inline-flex items-center gap-1"
@@ -990,7 +994,7 @@ export default function Home() {
       {/* CTA Section */}
       <section className="bg-[#f4f4f2] py-20 md:py-24">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#2d4242] mb-8">Ready to transform your AP?</h2>
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#2d4242] mb-8">Ready to transform your spend management with Medius?</h2>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button type="button" onClick={() => setIsEmailModalOpen(true)} className="inline-flex items-center justify-center px-8 py-4 bg-primary text-white font-semibold rounded hover:bg-primary/90 transition-colors uppercase tracking-wide text-sm">
               Book a Demo
