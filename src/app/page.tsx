@@ -784,9 +784,12 @@ export default function Home() {
                       <p className="text-xs text-gray-500 mt-0.5">Reducing manual intervention increases touchless, fully automated invoice processing.</p>
                     </div>
                   </div>
-                  <div className="bg-gray-50 rounded-lg px-4 py-3 flex items-center justify-between border border-gray-200">
+                  <div className="bg-gray-50 rounded-lg px-4 py-3 flex items-center justify-between gap-3 border border-gray-200">
                     <span className="font-mono text-lg font-semibold text-[#2d4242]">{poManualInterventionPct}%</span>
-                    <span className="text-sm text-gray-500">Current touchless rate: {100 - poManualInterventionPct}%</span>
+                    <span className="text-sm text-gray-500 flex items-center gap-2 flex-shrink-0">
+                      <span className="text-gray-400">•</span>
+                      <span className="whitespace-nowrap">Current touchless rate: {100 - poManualInterventionPct}%</span>
+                    </span>
                   </div>
                   <div className="relative">
                     <Slider value={[poManualInterventionPct]} onValueChange={handleManualInterventionChange} min={0} max={80} step={1} className="w-full" />
