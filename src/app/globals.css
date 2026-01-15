@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --radius: 0.5rem;
+  /* Medius color scheme */
+  --background: 60 7% 95%; /* Light cream/beige #f4f4f2 */
+  --foreground: 180 20% 20%; /* Dark teal text */
+  --card: 0 0% 100%; /* White cards */
+  --card-foreground: 180 20% 20%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 180 20% 20%;
+  --primary: 357 66% 49%; /* Medius red #d02a31 */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 180 20% 26%; /* Dark teal #2d4242 */
+  --secondary-foreground: 0 0% 100%;
+  --muted: 60 5% 90%;
+  --muted-foreground: 180 10% 40%;
+  --accent: 357 66% 49%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 60 5% 85%;
+  --input: 60 5% 90%;
+  --ring: 357 66% 49%;
+  --chart-1: 357 66% 49%;
+  --chart-2: 180 20% 26%;
+  --chart-3: 35 80% 45%;
+  --chart-4: 50 80% 50%;
+  --chart-5: 65 80% 55%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}
