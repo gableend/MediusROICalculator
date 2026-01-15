@@ -613,34 +613,40 @@ export default function Home() {
               {/* Animated background gradient */}
               <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-primary/10 to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-              <div className="relative flex flex-col md:flex-row items-center justify-between gap-6">
-                <div className="flex items-center gap-4 flex-1">
+              {/* Sparkle effects */}
+              <div className="absolute top-4 right-4 w-2 h-2 bg-primary rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-ping" />
+              <div className="absolute top-8 right-16 w-1.5 h-1.5 bg-primary/60 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100" />
+              <div className="absolute bottom-6 right-8 w-1 h-1 bg-primary/40 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-200" />
+              <div className="absolute top-6 left-1/3 w-1.5 h-1.5 bg-primary/50 rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-pulse delay-150" />
+
+              <div className="relative flex flex-col lg:flex-row items-center justify-between gap-6">
+                <div className="flex items-center justify-center lg:justify-start flex-shrink-0">
                   {/* Animated pill badge */}
-                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full border border-primary/20 animate-pulse">
+                  <div className="inline-flex items-center gap-2 px-4 py-2.5 bg-primary/10 rounded-full border border-primary/20 animate-pulse">
                     <span className="relative flex h-2 w-2">
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
                       <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
                     </span>
-                    <span className="text-xs md:text-sm font-semibold text-primary uppercase tracking-wide">ROI Benchmark</span>
+                    <span className="text-xs md:text-sm font-semibold text-primary uppercase tracking-wide whitespace-nowrap">ROI Benchmark</span>
                   </div>
                 </div>
 
-                <div className="flex-1 text-center md:text-left">
-                  <p className="text-lg md:text-xl font-semibold text-[#2d4242]">
+                <div className="flex-1 flex items-center justify-center lg:justify-start text-center lg:text-left px-4">
+                  <p className="text-base md:text-lg lg:text-xl font-semibold text-[#2d4242] whitespace-nowrap">
                     See how top performers achieve 93.7% touchless processing
                   </p>
                 </div>
 
-                <div className="flex-shrink-0">
+                <div className="flex-shrink-0 flex items-center justify-center lg:justify-end">
                   <a
                     href="/pdf/medius_rr_ap-automation-benchmark_2025.pdf"
                     download
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg transition-all duration-200 hover:scale-105 hover:shadow-lg group"
+                    className="inline-flex items-center gap-2 px-6 py-2.5 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg transition-all duration-200 hover:scale-105 hover:shadow-lg group/btn"
                   >
-                    <svg className="w-5 h-5 transition-transform group-hover:translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 transition-transform group-hover/btn:translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
-                    <span className="text-sm uppercase tracking-wide">Download Report</span>
+                    <span className="text-sm uppercase tracking-wide whitespace-nowrap">Download Report</span>
                   </a>
                 </div>
               </div>
