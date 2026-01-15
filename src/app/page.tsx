@@ -554,10 +554,10 @@ export default function Home() {
           </svg>
         </div>
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#2d4242] text-center mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#2d4242] text-center mb-4">
             Are You Leaving Savings on the Table?
           </h2>
-          <p className="text-[#2d4242]/70 text-center max-w-2xl mx-auto mb-8 md:mb-12">
+          <p className="text-xl md:text-2xl text-[#2d4242]/70 text-center max-w-2xl mx-auto mb-8 md:mb-12">
             Compare your AP KPIs to best-in-class Medius customers.
           </p>
 
