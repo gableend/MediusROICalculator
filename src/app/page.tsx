@@ -587,7 +587,7 @@ export default function Home() {
                     <p className="text-[9px] md:text-[10px] text-[#2d4242]/70 uppercase tracking-wide">PO Touchless Capture Rate</p>
                   </div>
                   <div className="bg-white rounded-lg p-3 text-center transition-all duration-200 hover:shadow-lg hover:-translate-y-1">
-                    <div className="text-xl md:text-2xl font-bold text-primary">96.3%</div>
+                    <div className="text-lg md:text-xl font-bold text-primary">68.9% → 96.3%</div>
                     <p className="text-[9px] md:text-[10px] text-[#2d4242]/70 uppercase tracking-wide">Touchless Processing Rate</p>
                   </div>
                   <div className="bg-white rounded-lg p-3 text-center transition-all duration-200 hover:shadow-lg hover:-translate-y-1">
@@ -596,7 +596,7 @@ export default function Home() {
                   </div>
                 </div>
                 <BenchmarkChart title="Touchless processing rate" averageValue={68.9} bestValue={96.3} averageLabel="68.9%" bestLabel="96.3%" maxValue={120} />
-                <BenchmarkChart title="Total invoice processing cycle time" averageValue={5.1} bestValue={1.4} averageLabel="5.1 Days" bestLabel="1.4 Days" maxValue={6} />
+                <BenchmarkChart title="Total invoice processing cycle time" averageValue={5.1} bestValue={1.4} averageLabel="5.1 days" bestLabel="1.4 days" maxValue={6} />
               </div>
             </div>
 
@@ -618,7 +618,7 @@ export default function Home() {
                   </div>
                 </div>
                 <BenchmarkChart title="Non-PO Touchless Capture Rate" averageValue={76.6} bestValue={100} averageLabel="76.6%" bestLabel="100%" maxValue={120} />
-                <BenchmarkChart title="Total invoice processing cycle time" averageValue={7.4} bestValue={2.1} averageLabel="7.4 Days" bestLabel="2.1 Days" maxValue={8} />
+                <BenchmarkChart title="Total invoice processing cycle time" averageValue={7.4} bestValue={2.1} averageLabel="7.4 days" bestLabel="2.1 days" maxValue={8} />
               </div>
             </div>
           </div>
@@ -786,9 +786,8 @@ export default function Home() {
                   </div>
                   <div className="bg-gray-50 rounded-lg px-4 py-3 flex items-center justify-between gap-3 border border-gray-200">
                     <span className="font-mono text-lg font-semibold text-[#2d4242]">{poManualInterventionPct}%</span>
-                    <span className="text-sm text-gray-500 flex items-center gap-2 flex-shrink-0">
-                      <span className="text-gray-400">•</span>
-                      <span className="whitespace-nowrap">Current touchless rate: {100 - poManualInterventionPct}%</span>
+                    <span className="text-sm text-gray-500 whitespace-nowrap">
+                      · Current touchless rate: {100 - poManualInterventionPct}%
                     </span>
                   </div>
                   <div className="relative">
