@@ -606,6 +606,46 @@ export default function Home() {
               </div>
             </div>
           </div>
+
+          {/* ROI Benchmark Download CTA */}
+          <div className="mt-12 md:mt-16">
+            <div className="relative bg-white rounded-xl shadow-lg p-8 md:p-10 overflow-hidden group hover:shadow-2xl transition-all duration-300">
+              {/* Animated background gradient */}
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-primary/10 to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+              <div className="relative flex flex-col md:flex-row items-center justify-between gap-6">
+                <div className="flex items-center gap-4 flex-1">
+                  {/* Animated pill badge */}
+                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full border border-primary/20 animate-pulse">
+                    <span className="relative flex h-2 w-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
+                    </span>
+                    <span className="text-xs md:text-sm font-semibold text-primary uppercase tracking-wide">ROI Benchmark</span>
+                  </div>
+                </div>
+
+                <div className="flex-1 text-center md:text-left">
+                  <p className="text-lg md:text-xl font-semibold text-[#2d4242]">
+                    See how top performers achieve 93.7% touchless processing
+                  </p>
+                </div>
+
+                <div className="flex-shrink-0">
+                  <a
+                    href="/pdf/medius_rr_ap-automation-benchmark_2025.pdf"
+                    download
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg transition-all duration-200 hover:scale-105 hover:shadow-lg group"
+                  >
+                    <svg className="w-5 h-5 transition-transform group-hover:translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                    <span className="text-sm uppercase tracking-wide">Download Report</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div className="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none">
