@@ -58,16 +58,32 @@ const DEFAULT_VALUES = {
 };
 
 // ============================================
-// HELPER FUNCTIONS
+// CENTRALIZED FORMATTING FUNCTIONS
 // ============================================
 
-function formatNumber(num: number): string {
-  return new Intl.NumberFormat('en-US', {
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0,
-  }).format(Math.round(num));
+// Format days: 1 decimal if fractional, no decimal if whole
+function formatDays(num: number): string {
+  return num % 1 === 0 ? num.toFixed(0) : num.toFixed(1);
 }
 
+// Format days range: low end with 1 decimal if needed, high end floored
+function formatDaysRange(low: number, high: number): string {
+  const lowStr = low % 1 === 0 ? low.toFixed(0) : low.toFixed(1);
+  const highStr = Math.floor(high).toString();
+  return `${lowStr} – ${highStr}`;
+}
+
+// Format day/days label
+function dayLabel(num: number): string {
+  return num === 1 ? 'day' : 'days';
+}
+
+// Format percentages: 1 decimal for non-100%, no decimal for 100%
+function formatPercent(num: number): string {
+  return num === 100 ? '100%' : `${num.toFixed(1)}%`;
+}
+
+// Format currency: no cents, thousands separators
 function formatCurrency(num: number, symbol: string): string {
   return `${symbol}${new Intl.NumberFormat('en-US', {
     minimumFractionDigits: 0,
@@ -75,12 +91,12 @@ function formatCurrency(num: number, symbol: string): string {
   }).format(Math.round(num))}`;
 }
 
-function roundToWhole(num: number): string {
-  return Math.round(num).toString();
-}
-
-function floorDisplay(num: number): string {
-  return Math.floor(num + 1e-9).toString();
+// Format invoice counts
+function formatNumber(num: number): string {
+  return new Intl.NumberFormat('en-US', {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  }).format(Math.round(num));
 }
 
 // Custom hook for detecting when element is in view
@@ -568,15 +584,15 @@ export default function Home() {
                 <div className="col-span-2 grid grid-cols-3 gap-2 mb-2">
                   <div className="bg-white rounded-lg p-3 text-center transition-all duration-200 hover:shadow-lg hover:-translate-y-1">
                     <div className="text-lg md:text-xl font-bold text-primary">77% → 100%</div>
-                    <p className="text-[10px] md:text-xs text-[#2d4242]/70 uppercase tracking-wide">PO Touchless Capture Rate</p>
+                    <p className="text-[9px] md:text-[10px] text-[#2d4242]/70 uppercase tracking-wide">PO Touchless Capture Rate</p>
                   </div>
                   <div className="bg-white rounded-lg p-3 text-center transition-all duration-200 hover:shadow-lg hover:-translate-y-1">
                     <div className="text-xl md:text-2xl font-bold text-primary">96.3%</div>
-                    <p className="text-[10px] md:text-xs text-[#2d4242]/70 uppercase tracking-wide">Touchless Processing Rate</p>
+                    <p className="text-[9px] md:text-[10px] text-[#2d4242]/70 uppercase tracking-wide">Touchless Processing Rate</p>
                   </div>
                   <div className="bg-white rounded-lg p-3 text-center transition-all duration-200 hover:shadow-lg hover:-translate-y-1">
                     <div className="text-xl md:text-2xl font-bold text-primary">1.4 days</div>
-                    <p className="text-[10px] md:text-xs text-[#2d4242]/70 uppercase tracking-wide">Total invoice processing cycle time</p>
+                    <p className="text-[9px] md:text-[10px] text-[#2d4242]/70 uppercase tracking-wide">Total invoice processing cycle time</p>
                   </div>
                 </div>
                 <BenchmarkChart title="Touchless processing rate" averageValue={68.9} bestValue={96.3} averageLabel="68.9%" bestLabel="96.3%" maxValue={120} />
@@ -590,15 +606,15 @@ export default function Home() {
                 <div className="col-span-2 grid grid-cols-3 gap-2 mb-2">
                   <div className="bg-white rounded-lg p-3 text-center transition-all duration-200 hover:shadow-lg hover:-translate-y-1">
                     <div className="text-lg md:text-xl font-bold text-primary">76.6% → 100%</div>
-                    <p className="text-[10px] md:text-xs text-[#2d4242]/70 uppercase tracking-wide">Non-PO Touchless Capture Rate</p>
+                    <p className="text-[9px] md:text-[10px] text-[#2d4242]/70 uppercase tracking-wide">Non-PO Touchless Capture Rate</p>
                   </div>
                   <div className="bg-white rounded-lg p-3 text-center transition-all duration-200 hover:shadow-lg hover:-translate-y-1">
                     <div className="text-lg md:text-xl font-bold text-primary">65.7% → 99.5%</div>
-                    <p className="text-[10px] md:text-xs text-[#2d4242]/70 uppercase tracking-wide">Non-PO Automatic Routing Rate</p>
+                    <p className="text-[9px] md:text-[10px] text-[#2d4242]/70 uppercase tracking-wide">Non-PO Automatic Routing Rate</p>
                   </div>
                   <div className="bg-white rounded-lg p-3 text-center transition-all duration-200 hover:shadow-lg hover:-translate-y-1">
                     <div className="text-lg md:text-xl font-bold text-primary">3.3 → 1.0 day</div>
-                    <p className="text-[10px] md:text-xs text-[#2d4242]/70 uppercase tracking-wide">Non-PO Average Approval Time</p>
+                    <p className="text-[9px] md:text-[10px] text-[#2d4242]/70 uppercase tracking-wide">Non-PO Average Approval Time</p>
                   </div>
                 </div>
                 <BenchmarkChart title="Non-PO Touchless Capture Rate" averageValue={76.6} bestValue={100} averageLabel="76.6%" bestLabel="100%" maxValue={120} />
@@ -633,14 +649,15 @@ export default function Home() {
 
                 <div className="flex-1 flex items-center justify-center lg:justify-start text-center lg:text-left px-4">
                   <p className="text-base md:text-lg lg:text-xl font-semibold text-[#2d4242] whitespace-nowrap">
-                    See how top performers achieve 96.3% touchless processing
+                    See how top performers achieve up to 96.3% touchless processing
                   </p>
                 </div>
 
                 <div className="flex-shrink-0 flex items-center justify-center lg:justify-end">
                   <a
                     href="/pdf/medius_rr_ap-automation-benchmark_2025.pdf"
-                    download
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 px-6 py-2.5 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg transition-all duration-200 hover:scale-105 hover:shadow-lg group/btn"
                   >
                     <svg className="w-5 h-5 transition-transform group-hover/btn:translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -803,7 +820,7 @@ export default function Home() {
                   </div>
                   <div className="text-2xl md:text-3xl font-bold text-primary">
                     {poDaysSavedAvg > 0 || poDaysSavedBest > 0 ? (
-                      <AnimatedValue>{roundToWhole(poDaysSavedAvg)} – {floorDisplay(poDaysSavedBest)} days</AnimatedValue>
+                      <AnimatedValue>{formatDaysRange(poDaysSavedAvg, poDaysSavedBest)} {dayLabel(Math.floor(poDaysSavedBest))}</AnimatedValue>
                     ) : (
                       <span className="text-[#2d4242]/50">Already optimized</span>
                     )}
@@ -820,7 +837,7 @@ export default function Home() {
                   </div>
                   <div className="text-2xl md:text-3xl font-bold text-primary">
                     {nonPoDaysSavedAvg > 0 || nonPoDaysSavedBest > 0 ? (
-                      <AnimatedValue>{roundToWhole(nonPoDaysSavedAvg)} – {floorDisplay(nonPoDaysSavedBest)} days</AnimatedValue>
+                      <AnimatedValue>{formatDaysRange(nonPoDaysSavedAvg, nonPoDaysSavedBest)} {dayLabel(Math.floor(nonPoDaysSavedBest))}</AnimatedValue>
                     ) : (
                       <span className="text-[#2d4242]/50">Already optimized</span>
                     )}
@@ -870,7 +887,7 @@ export default function Home() {
                 </button>
 
                 <p className="text-xs text-gray-500 text-center">
-                  Data reflects actual performance across thousands of AP teams using Medius. Benchmarks show both average and best-in-class outcomes.
+                  Benchmarks based on millions of invoices processed by Medius customers globally. Best-in-class reflects the top 10% of performers.
                 </p>
               </div>
             </div>
@@ -909,6 +926,28 @@ export default function Home() {
             <button type="button" className="mt-8 inline-flex items-center justify-center px-6 py-3 bg-primary text-white font-semibold rounded hover:bg-primary/90 transition-colors uppercase tracking-wide text-sm">
               Read the Case Study
             </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Customer Video Section */}
+      <section className="bg-white py-16 md:py-20 border-t border-gray-100">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h3 className="text-xl md:text-2xl font-semibold text-[#2d4242] text-center mb-8">
+              See how Medius customers achieve best-in-class AP performance
+            </h3>
+            <div className="relative aspect-video rounded-xl overflow-hidden shadow-lg bg-gray-900">
+              <video
+                controls
+                preload="metadata"
+                className="w-full h-full"
+                poster="/images/medius-light-sand-background-6.jpg"
+              >
+                <source src="/videos/medius-customers.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
           </div>
         </div>
       </section>

@@ -40,13 +40,24 @@
   - [x] Success state after submission
 - [x] Add more currencies (CAD, AUD, CHF, JPY)
 - [x] Add reset button to restore default calculator values
+- [x] Move share and reset buttons below calculator
+- [x] Add wave SVG at bottom of calculator section
+- [x] Separate testimonial quote to white background section
+- [x] Initialize git repository and create initial commit
+- [x] Connect to GitHub repository (https://github.com/gableend/MediusROICalculator.git)
+- [x] Fix Netlify deployment configuration
+- [x] Upgrade Next.js to 16.1.2 (security fix for CVE-2025-55182)
+- [x] Remove deprecated images.domains config
 
 ## Current State
-- Version 36 is live
+- Version 37 is live
 - All calculator functionality working
 - Responsive design implemented
-- Dev server running on port 3000
 - 9 currencies supported
+- **GitHub repository connected and code pushed successfully**
+- **Repository URL**: https://github.com/gableend/MediusROICalculator
+- **Next.js upgraded to 16.1.2** (latest secure version)
+- **Netlify deployment in progress** - awaiting successful deploy
 
 ## Notes
 - Calculator uses Medius ROI PDF benchmarks for calculations
@@ -54,3 +65,7 @@
 - Benchmark data from Medius AP Benchmark Report
 - URL params: c (currency), po, npo, days, manual, spend
 - Email form logs to console (connect to CRM in production)
+- Git repository initialized with main branch
+- All code committed and pushed to GitHub
+- Security vulnerability CVE-2025-55182 addressed with Next.js 16.1.2 upgrade
+- netlify.toml configured with publish = ".next"
