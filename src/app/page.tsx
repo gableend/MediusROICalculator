@@ -567,8 +567,8 @@ export default function Home() {
               <div className="grid grid-cols-2 gap-4 mt-4">
                 <div className="col-span-2 grid grid-cols-3 gap-2 mb-2">
                   <div className="bg-white rounded-lg p-3 text-center transition-all duration-200 hover:shadow-lg hover:-translate-y-1">
-                    <div className="text-xl md:text-2xl font-bold text-primary">100%</div>
-                    <p className="text-[10px] md:text-xs text-[#2d4242]/70 uppercase tracking-wide">Touchless Capture Rate</p>
+                    <div className="text-lg md:text-xl font-bold text-primary">77% → 100%</div>
+                    <p className="text-[10px] md:text-xs text-[#2d4242]/70 uppercase tracking-wide">PO Touchless Capture Rate</p>
                   </div>
                   <div className="bg-white rounded-lg p-3 text-center transition-all duration-200 hover:shadow-lg hover:-translate-y-1">
                     <div className="text-xl md:text-2xl font-bold text-primary">96.3%</div>
@@ -576,11 +576,11 @@ export default function Home() {
                   </div>
                   <div className="bg-white rounded-lg p-3 text-center transition-all duration-200 hover:shadow-lg hover:-translate-y-1">
                     <div className="text-xl md:text-2xl font-bold text-primary">1.4 days</div>
-                    <p className="text-[10px] md:text-xs text-[#2d4242]/70 uppercase tracking-wide">Total Processing Time</p>
+                    <p className="text-[10px] md:text-xs text-[#2d4242]/70 uppercase tracking-wide">Total invoice processing cycle time</p>
                   </div>
                 </div>
                 <BenchmarkChart title="Touchless processing rate" averageValue={68.9} bestValue={96.3} averageLabel="68.9%" bestLabel="96.3%" maxValue={120} />
-                <BenchmarkChart title="Total processing time" averageValue={5.1} bestValue={1.4} averageLabel="5.1 Days" bestLabel="1.4 Days" maxValue={6} />
+                <BenchmarkChart title="Total invoice processing cycle time" averageValue={5.1} bestValue={1.4} averageLabel="5.1 Days" bestLabel="1.4 Days" maxValue={6} />
               </div>
             </div>
 
@@ -589,20 +589,20 @@ export default function Home() {
               <div className="grid grid-cols-2 gap-4 mt-4">
                 <div className="col-span-2 grid grid-cols-3 gap-2 mb-2">
                   <div className="bg-white rounded-lg p-3 text-center transition-all duration-200 hover:shadow-lg hover:-translate-y-1">
-                    <div className="text-xl md:text-2xl font-bold text-primary">100%</div>
-                    <p className="text-[10px] md:text-xs text-[#2d4242]/70 uppercase tracking-wide">Touchless Capture Rate</p>
+                    <div className="text-lg md:text-xl font-bold text-primary">76.6% → 100%</div>
+                    <p className="text-[10px] md:text-xs text-[#2d4242]/70 uppercase tracking-wide">Non-PO Touchless Capture Rate</p>
                   </div>
                   <div className="bg-white rounded-lg p-3 text-center transition-all duration-200 hover:shadow-lg hover:-translate-y-1">
-                    <div className="text-xl md:text-2xl font-bold text-primary">99.5%</div>
-                    <p className="text-[10px] md:text-xs text-[#2d4242]/70 uppercase tracking-wide">Automatic Approval Routing</p>
+                    <div className="text-lg md:text-xl font-bold text-primary">65.7% → 99.5%</div>
+                    <p className="text-[10px] md:text-xs text-[#2d4242]/70 uppercase tracking-wide">Non-PO Automatic Routing Rate</p>
                   </div>
                   <div className="bg-white rounded-lg p-3 text-center transition-all duration-200 hover:shadow-lg hover:-translate-y-1">
-                    <div className="text-xl md:text-2xl font-bold text-primary">2.1 days</div>
-                    <p className="text-[10px] md:text-xs text-[#2d4242]/70 uppercase tracking-wide">Total Processing Time</p>
+                    <div className="text-lg md:text-xl font-bold text-primary">3.3 → 1.0 day</div>
+                    <p className="text-[10px] md:text-xs text-[#2d4242]/70 uppercase tracking-wide">Non-PO Average Approval Time</p>
                   </div>
                 </div>
-                <BenchmarkChart title="Touchless capture rate" averageValue={76.6} bestValue={100} averageLabel="76.6%" bestLabel="100%" maxValue={120} />
-                <BenchmarkChart title="Total processing time" averageValue={7.4} bestValue={2.1} averageLabel="7.4 Days" bestLabel="2.1 Days" maxValue={8} />
+                <BenchmarkChart title="Non-PO Touchless Capture Rate" averageValue={76.6} bestValue={100} averageLabel="76.6%" bestLabel="100%" maxValue={120} />
+                <BenchmarkChart title="Total invoice processing cycle time" averageValue={7.4} bestValue={2.1} averageLabel="7.4 Days" bestLabel="2.1 Days" maxValue={8} />
               </div>
             </div>
           </div>
@@ -868,7 +868,7 @@ export default function Home() {
                 </button>
 
                 <p className="text-xs text-gray-500 text-center">
-                  Benchmarks based on millions of invoices processed by Medius customers globally.
+                  Data reflects actual performance across thousands of AP teams using Medius. Benchmarks show both average and best-in-class outcomes.
                 </p>
               </div>
             </div>
