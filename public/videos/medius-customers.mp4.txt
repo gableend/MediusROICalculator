@@ -1,0 +1,2 @@
+Placeholder for Medius customer video (MP4)
+User should upload actual video file as medius-customers.mp4
