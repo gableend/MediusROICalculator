@@ -757,13 +757,11 @@ export default function Home() {
                   </div>
                   <Slider value={[currentDaysToProcess]} onValueChange={handleDaysChange} min={1} max={20} step={0.1} className="w-full" />
                   <div className="flex justify-between text-xs text-gray-500">
-                    <span className="hidden md:inline">1.0 <span className="text-[10px] text-gray-400">Best NPO</span></span>
+                    <span>1</span>
                     <span className="hidden md:inline">2.6 <span className="text-[10px] text-gray-400">Best PO</span></span>
                     <span className="hidden md:inline">6.3 <span className="text-[10px] text-gray-400">Avg NPO</span></span>
                     <span className="hidden md:inline">6.7 <span className="text-[10px] text-gray-400">Avg PO</span></span>
-                    <span className="md:hidden">1</span>
-                    <span className="md:hidden">20</span>
-                    <span className="hidden md:inline">20</span>
+                    <span>20</span>
                   </div>
                 </div>
 
@@ -886,7 +884,23 @@ export default function Home() {
                   Book a Free 15-min ROI Review
                 </button>
 
-                <p className="text-xs text-gray-500 text-center">
+                {/* Customer Video */}
+                <div className="mt-8">
+                  <p className="text-sm font-medium text-[#2d4242] mb-3">Hear from Medius customers</p>
+                  <div className="relative aspect-video rounded-lg overflow-hidden shadow-md bg-gray-900">
+                    <video
+                      controls
+                      preload="metadata"
+                      className="w-full h-full"
+                      poster="/images/medius-light-sand-background-6.jpg"
+                    >
+                      <source src="/videos/medius-customers.mp4" type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                </div>
+
+                <p className="text-xs text-gray-500 text-center mt-6">
                   Benchmarks based on millions of invoices processed by Medius customers globally. Best-in-class reflects the top 10% of performers.
                 </p>
               </div>
@@ -908,45 +922,66 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonial Section */}
+      {/* Customer Proof Section */}
       <section className="bg-white py-20 md:py-24">
-        <div className="container mx-auto px-4 text-center">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-5xl text-primary mb-8">"</div>
-            <blockquote className="text-xl md:text-2xl text-[#2d4242] font-medium leading-relaxed mb-8">
-              "The amount of money we saved by investing in Medius AP Automation is roughly
-              equivalent to the annual salaries of ten full-time employees, and we cut the costs
-              of this work by nearly NOK 5 million (USD 600K) annually. It is therefore a fact
-              that the investment has paid off quickly."
-            </blockquote>
-            <div className="text-[#2d4242]">
-              <p className="font-semibold">Magnus Frantzen</p>
-              <p className="text-[#2d4242]/70">CFO, Bohus</p>
-            </div>
-            <button type="button" className="mt-8 inline-flex items-center justify-center px-6 py-3 bg-primary text-white font-semibold rounded hover:bg-primary/90 transition-colors uppercase tracking-wide text-sm">
-              Read the Case Study
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* Customer Video Section */}
-      <section className="bg-white py-16 md:py-20 border-t border-gray-100">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h3 className="text-xl md:text-2xl font-semibold text-[#2d4242] text-center mb-8">
-              See how Medius customers achieve best-in-class AP performance
-            </h3>
-            <div className="relative aspect-video rounded-xl overflow-hidden shadow-lg bg-gray-900">
-              <video
-                controls
-                preload="metadata"
-                className="w-full h-full"
-                poster="/images/medius-light-sand-background-6.jpg"
+          <h2 className="text-2xl md:text-3xl font-bold text-[#2d4242] text-center mb-12">
+            Trusted by global brands achieving best-in-class AP performance
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {/* Briggs Industrial Solutions */}
+            <div className="bg-gray-50 rounded-lg p-8 text-center flex flex-col items-center">
+              <div className="h-16 flex items-center justify-center mb-6">
+                <span className="text-xl font-bold text-[#2d4242]">Briggs Industrial Solutions</span>
+              </div>
+              <p className="text-sm text-[#2d4242]/80 mb-6 italic">
+                "Reduced invoice processing time by 70% while improving accuracy."
+              </p>
+              <a
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary font-medium text-sm hover:underline inline-flex items-center gap-1"
               >
-                <source src="/videos/medius-customers.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+                Read the case study →
+              </a>
+            </div>
+
+            {/* PUMA */}
+            <div className="bg-gray-50 rounded-lg p-8 text-center flex flex-col items-center">
+              <div className="h-16 flex items-center justify-center mb-6">
+                <span className="text-xl font-bold text-[#2d4242]">PUMA</span>
+              </div>
+              <p className="text-sm text-[#2d4242]/80 mb-6 italic">
+                "Achieved 95% touchless processing across global operations."
+              </p>
+              <a
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary font-medium text-sm hover:underline inline-flex items-center gap-1"
+              >
+                Read the case study →
+              </a>
+            </div>
+
+            {/* WD-40 */}
+            <div className="bg-gray-50 rounded-lg p-8 text-center flex flex-col items-center">
+              <div className="h-16 flex items-center justify-center mb-6">
+                <span className="text-xl font-bold text-[#2d4242]">WD-40</span>
+              </div>
+              <p className="text-sm text-[#2d4242]/80 mb-6 italic">
+                "Cut AP costs by 60% with full invoice automation."
+              </p>
+              <a
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary font-medium text-sm hover:underline inline-flex items-center gap-1"
+              >
+                Read the case study →
+              </a>
             </div>
           </div>
         </div>
