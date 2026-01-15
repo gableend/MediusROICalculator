@@ -755,22 +755,25 @@ export default function Home() {
                     <span className="font-mono text-lg font-semibold text-[#2d4242]">{currentDaysToProcess % 1 === 0 ? currentDaysToProcess.toFixed(0) : currentDaysToProcess.toFixed(1)}</span>
                     <span className="text-sm text-gray-500">days</span>
                   </div>
-                  <Slider value={[currentDaysToProcess]} onValueChange={handleDaysChange} min={1} max={20} step={0.1} className="w-full" />
-                  <div className="relative h-6 mt-1 text-[10px] text-gray-500">
-                    <span className="absolute hidden lg:inline-block" style={{ left: '0%', transform: 'translateX(0%)' }}>
-                      1.0 <span className="text-[9px] text-gray-400">Best NPO</span>
-                    </span>
-                    <span className="absolute hidden lg:inline-block" style={{ left: '8.4%', transform: 'translateX(-50%)' }}>
-                      2.6 <span className="text-[9px] text-gray-400">Best PO</span>
-                    </span>
-                    <span className="absolute hidden md:inline-block" style={{ left: '27.9%', transform: 'translateX(-50%)' }}>
-                      6.3 <span className="text-[9px] text-gray-400">Avg NPO</span>
-                    </span>
-                    <span className="absolute hidden md:inline-block" style={{ left: '30%', transform: 'translateX(-50%)' }}>
-                      6.7 <span className="text-[9px] text-gray-400">Avg PO</span>
-                    </span>
-                    <span className="absolute" style={{ left: '100%', transform: 'translateX(-100%)' }}>20</span>
+                  <div className="relative">
+                    <Slider value={[currentDaysToProcess]} onValueChange={handleDaysChange} min={1} max={20} step={0.1} className="w-full" />
+                    {/* Benchmark dot markers */}
+                    <div className="absolute top-1/2 left-0 right-0 h-0 pointer-events-none" style={{ transform: 'translateY(-50%)' }}>
+                      <span className="absolute w-1.5 h-1.5 bg-gray-400 rounded-full" style={{ left: '0%', transform: 'translateX(-50%)' }} />
+                      <span className="absolute w-1.5 h-1.5 bg-gray-400 rounded-full" style={{ left: '8.4%', transform: 'translateX(-50%)' }} />
+                      <span className="absolute w-1.5 h-1.5 bg-gray-400 rounded-full" style={{ left: '27.9%', transform: 'translateX(-50%)' }} />
+                      <span className="absolute w-1.5 h-1.5 bg-gray-400 rounded-full" style={{ left: '30%', transform: 'translateX(-50%)' }} />
+                    </div>
                   </div>
+                  {/* Min/Max labels */}
+                  <div className="flex justify-between text-xs text-gray-500 mt-1">
+                    <span>1</span>
+                    <span>20</span>
+                  </div>
+                  {/* Benchmark legend */}
+                  <p className="text-xs text-gray-500">
+                    Benchmarks: Best NPO (1.0) • Best PO (2.6) • Avg NPO (6.3) • Avg PO (6.7)
+                  </p>
                 </div>
 
                 <div className="space-y-3">
@@ -785,17 +788,23 @@ export default function Home() {
                     <span className="font-mono text-lg font-semibold text-[#2d4242]">{poManualInterventionPct}%</span>
                     <span className="text-sm text-gray-500">Current touchless rate: {100 - poManualInterventionPct}%</span>
                   </div>
-                  <Slider value={[poManualInterventionPct]} onValueChange={handleManualInterventionChange} min={0} max={80} step={1} className="w-full" />
-                  <div className="relative h-6 mt-1 text-[10px] text-gray-500">
-                    <span className="absolute" style={{ left: '0%', transform: 'translateX(0%)' }}>0%</span>
-                    <span className="absolute hidden md:inline-block" style={{ left: '7.5%', transform: 'translateX(-50%)' }}>
-                      6% <span className="text-[9px] text-gray-400">Best</span>
-                    </span>
-                    <span className="absolute hidden md:inline-block" style={{ left: '41.25%', transform: 'translateX(-50%)' }}>
-                      33% <span className="text-[9px] text-gray-400">Avg</span>
-                    </span>
-                    <span className="absolute" style={{ left: '100%', transform: 'translateX(-100%)' }}>80%</span>
+                  <div className="relative">
+                    <Slider value={[poManualInterventionPct]} onValueChange={handleManualInterventionChange} min={0} max={80} step={1} className="w-full" />
+                    {/* Benchmark dot markers */}
+                    <div className="absolute top-1/2 left-0 right-0 h-0 pointer-events-none" style={{ transform: 'translateY(-50%)' }}>
+                      <span className="absolute w-1.5 h-1.5 bg-gray-400 rounded-full" style={{ left: '7.5%', transform: 'translateX(-50%)' }} />
+                      <span className="absolute w-1.5 h-1.5 bg-gray-400 rounded-full" style={{ left: '41.25%', transform: 'translateX(-50%)' }} />
+                    </div>
                   </div>
+                  {/* Min/Max labels */}
+                  <div className="flex justify-between text-xs text-gray-500 mt-1">
+                    <span>0%</span>
+                    <span>80%</span>
+                  </div>
+                  {/* Benchmark legend */}
+                  <p className="text-xs text-gray-500">
+                    Benchmarks: Best (6%) • Avg (33%)
+                  </p>
                 </div>
 
                 <div className="space-y-3">
