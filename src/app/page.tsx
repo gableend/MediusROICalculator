@@ -633,7 +633,7 @@ export default function Home() {
 
                 <div className="flex-1 flex items-center justify-center lg:justify-start text-center lg:text-left px-4">
                   <p className="text-base md:text-lg lg:text-xl font-semibold text-[#2d4242] whitespace-nowrap">
-                    See how top performers achieve 93.7% touchless processing
+                    See how top performers achieve 96.3% touchless processing
                   </p>
                 </div>
 
@@ -731,20 +731,22 @@ export default function Home() {
                     <span className="w-2 h-2 mt-2 rounded-full bg-primary flex-shrink-0" />
                     <div className="flex-1">
                       <label className="block text-sm font-medium text-[#2d4242]">Current days to process an invoice</label>
-                      <p className="text-xs text-gray-500 mt-0.5">Most AP teams process invoices in 7–10 days. Best-in-class teams do it in 1–3.</p>
+                      <p className="text-xs text-gray-500 mt-0.5">Most teams: 7-10 days. Best: 1-3.</p>
                     </div>
                   </div>
                   <div className="bg-gray-50 rounded-lg px-4 py-3 flex items-center justify-between border border-gray-200">
-                    <span className="font-mono text-lg font-semibold text-[#2d4242]">{currentDaysToProcess.toFixed(1)}</span>
+                    <span className="font-mono text-lg font-semibold text-[#2d4242]">{currentDaysToProcess % 1 === 0 ? currentDaysToProcess.toFixed(0) : currentDaysToProcess.toFixed(1)}</span>
                     <span className="text-sm text-gray-500">days</span>
                   </div>
                   <Slider value={[currentDaysToProcess]} onValueChange={handleDaysChange} min={1} max={20} step={0.1} className="w-full" />
                   <div className="flex justify-between text-xs text-gray-500">
-                    <span>1.0 <span className="text-[10px] text-gray-400">Best (Non-PO)</span></span>
-                    <span>2.6 <span className="text-[10px] text-gray-400">Best (PO)</span></span>
-                    <span>6.3 <span className="text-[10px] text-gray-400">Avg (Non-PO)</span></span>
-                    <span>6.7 <span className="text-[10px] text-gray-400">Avg (PO)</span></span>
-                    <span>20</span>
+                    <span className="hidden md:inline">1.0 <span className="text-[10px] text-gray-400">Best NPO</span></span>
+                    <span className="hidden md:inline">2.6 <span className="text-[10px] text-gray-400">Best PO</span></span>
+                    <span className="hidden md:inline">6.3 <span className="text-[10px] text-gray-400">Avg NPO</span></span>
+                    <span className="hidden md:inline">6.7 <span className="text-[10px] text-gray-400">Avg PO</span></span>
+                    <span className="md:hidden">1</span>
+                    <span className="md:hidden">20</span>
+                    <span className="hidden md:inline">20</span>
                   </div>
                 </div>
 
@@ -850,7 +852,7 @@ export default function Home() {
                     <span className="w-2 h-2 mt-2 rounded-full bg-primary flex-shrink-0" />
                     <div>
                       <h4 className="text-sm font-medium text-[#2d4242]">Payment savings (annual)</h4>
-                      <p className="text-xs text-gray-500">From early payment discounts & reduced errors</p>
+                      <p className="text-xs text-gray-500">Estimated payment processing savings based on annual spend</p>
                     </div>
                   </div>
                   <div className="text-2xl md:text-3xl font-bold text-primary">
