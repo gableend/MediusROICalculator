@@ -619,10 +619,10 @@ export default function Home() {
       <section id="calculator-section" className="relative bg-[#2d4242] py-16 md:py-20 pb-28 md:pb-32">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
               See what spend automation is worth
             </h2>
-            <p className="text-lg text-white/70">
+            <p className="text-xl md:text-2xl text-white/70">
               Describe your AP process and see how much Medius could save you each year.
             </p>
           </div>
