@@ -209,7 +209,7 @@ export default function HeroConceptPage() {
           muted
           playsInline
         >
-          <source src="/video/AdobeStock_455008259_Video_4K_Preview.mov" type="video/mp4" />
+          <source src="/videos/AdobeStock_455008259_Video_4K_Preview.mp4" type="video/mp4" />
         </video>
 
         {/* Gradient veil — strong on left, fades to photo on right */}
