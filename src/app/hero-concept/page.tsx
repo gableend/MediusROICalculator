@@ -251,7 +251,7 @@ export default function HeroConceptPage() {
               }}
             >
               Medius eliminates manual invoice processing — AI that captures,
-              codes, routes, and pays without human intervention.
+              codes, routes, and pays without human intervention. 100% touchless.
             </p>
 
             <div className="flex gap-[13px] items-center">
