@@ -197,7 +197,7 @@ export default function HeroConceptPage() {
 
       {/* ─── Hero ─── */}
       <section
-        className="relative w-full min-h-screen flex items-center overflow-hidden"
+        className="relative w-full h-[600px] flex items-center overflow-hidden"
         style={{ background: "#2f4344" }}
       >
         {/* Background video */}
@@ -212,19 +212,32 @@ export default function HeroConceptPage() {
           <source src="/videos/AdobeStock_455008259_Video_4K_Preview.mp4" type="video/mp4" />
         </video>
 
-        {/* Gradient veil — strong on left, fades to photo on right */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(100deg, #2f4344 0%, #2f4344 36%, rgba(47,67,68,0.85) 50%, rgba(30,46,46,0.30) 70%, rgba(0,0,0,0.38) 100%)",
-          }}
-        />
+        {/* Wave overlay — organic edge blending dark left into video right */}
+        <svg
+          className="absolute inset-0 w-full h-full"
+          viewBox="0 0 1440 600"
+          preserveAspectRatio="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          {/* Main dark wave shape */}
+          <path
+            d="M0,0 L820,0 C870,80 890,180 860,300 C830,420 790,480 760,600 L0,600 Z"
+            fill="#2f4344"
+          />
+          {/* Soft feather edge — subtle second layer for smooth blend */}
+          <path
+            d="M820,0 C870,80 890,180 860,300 C830,420 790,480 760,600 L820,600 C860,480 900,420 930,300 C960,180 940,80 900,0 Z"
+            fill="rgba(47,67,68,0.55)"
+          />
+          {/* Decorative lasso curves */}
+          <path d="M-60,420 C120,360 280,480 400,380 C520,280 560,160 700,120" fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth="2.5" strokeLinecap="round"/>
+          <path d="M-40,520 C100,460 240,560 380,460 C500,370 580,220 740,180" fill="none" stroke="rgba(255,255,255,0.04)" strokeWidth="2" strokeLinecap="round"/>
+          <path d="M40,80 C160,120 260,60 360,140 C460,220 500,340 580,360" fill="none" stroke="rgba(171,156,109,0.12)" strokeWidth="2" strokeLinecap="round"/>
+        </svg>
 
         {/* Content — container matches header's container mx-auto px-4 for logo alignment */}
         <div
-          className="w-full max-w-[1400px] mx-auto px-6 lg:px-8 relative z-10 flex items-center gap-[60px]"
-          style={{ paddingTop: "106px" }}
+          className="w-full max-w-[1400px] mx-auto px-6 lg:px-8 py-16 relative z-10 flex items-center gap-[60px]"
         >
           {/* ── Left: headline + CTAs ── */}
           <div style={{ flex: "0 0 450px" }}>
