@@ -221,10 +221,10 @@ export default function HeroConceptPage() {
           }}
         />
 
-        {/* Content */}
+        {/* Content — container matches header's container mx-auto px-4 for logo alignment */}
         <div
-          className="relative z-10 w-full max-w-[1280px] mx-auto flex items-center gap-[60px]"
-          style={{ padding: "0 52px", paddingTop: "106px" }}
+          className="container mx-auto px-4 relative z-10 flex items-center gap-[60px]"
+          style={{ paddingTop: "106px" }}
         >
           {/* ── Left: headline + CTAs ── */}
           <div style={{ flex: "0 0 450px" }}>
