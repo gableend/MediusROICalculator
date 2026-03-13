@@ -200,14 +200,17 @@ export default function HeroConceptPage() {
         className="relative w-full min-h-screen flex items-center overflow-hidden"
         style={{ background: "#2f4344" }}
       >
-        {/* Background photo */}
-        <div
-          className="absolute inset-0 bg-cover"
-          style={{
-            backgroundImage: "url('https://www.medius.com/media/xw3naave/global-hero.jpg')",
-            backgroundPosition: "68% center",
-          }}
-        />
+        {/* Background video */}
+        <video
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ objectPosition: "68% center" }}
+          autoPlay
+          loop
+          muted
+          playsInline
+        >
+          <source src="/video/AdobeStock_455008259_Video_4K_Preview.mov" type="video/mp4" />
+        </video>
 
         {/* Gradient veil — strong on left, fades to photo on right */}
         <div
