@@ -83,9 +83,9 @@ export default function Header() {
 
       {/* Main navigation */}
       <nav className="w-full px-6 lg:px-8">
-        <div className="flex items-center justify-between py-4">
+        <div className="flex items-center py-4">
           {/* Logo */}
-          <Link href="/" className="flex-shrink-0">
+          <Link href="/" className="flex-shrink-0 mr-10">
             <img
               src="https://ext.same-assets.com/1543560847/102504094.svg"
               alt="Medius"
@@ -119,7 +119,7 @@ export default function Header() {
           </div>
 
           {/* CTA Button */}
-          <div className="hidden lg:block">
+          <div className="hidden lg:block ml-auto">
             <Link
               href="#"
               className="inline-flex items-center justify-center px-5 py-2.5 bg-[#1a1a1a] text-white text-sm font-medium rounded hover:bg-gray-800 transition-colors"
