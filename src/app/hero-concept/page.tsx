@@ -223,7 +223,7 @@ export default function HeroConceptPage() {
 
         {/* Content — container matches header's container mx-auto px-4 for logo alignment */}
         <div
-          className="w-full px-6 lg:px-8 relative z-10 flex items-center gap-[60px]"
+          className="w-full max-w-[1400px] mx-auto px-6 lg:px-8 relative z-10 flex items-center gap-[60px]"
           style={{ paddingTop: "106px" }}
         >
           {/* ── Left: headline + CTAs ── */}
