@@ -122,7 +122,7 @@ export default function Header() {
           <div className="hidden lg:block ml-auto">
             <Link
               href="#"
-              className="inline-flex items-center justify-center px-5 py-2.5 bg-[#1a1a1a] text-white text-sm font-medium rounded hover:bg-gray-800 transition-colors"
+              className="inline-flex items-center justify-center px-6 py-2.5 bg-[#111111] text-white text-xs font-bold uppercase tracking-wide rounded-full hover:bg-gray-800 transition-colors"
             >
               Book a Demo
             </Link>
@@ -234,7 +234,7 @@ export default function Header() {
               </Link>
               <Link
                 href="#"
-                className="inline-flex items-center justify-center px-5 py-2.5 bg-[#1a1a1a] text-white text-sm font-medium rounded hover:bg-gray-800 transition-colors"
+                className="inline-flex items-center justify-center px-6 py-2.5 bg-[#111111] text-white text-xs font-bold uppercase tracking-wide rounded-full hover:bg-gray-800 transition-colors"
               >
                 Book a Demo
               </Link>

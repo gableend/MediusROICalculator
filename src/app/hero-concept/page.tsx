@@ -197,7 +197,7 @@ export default function HeroConceptPage() {
 
       {/* ─── Hero ─── */}
       <section
-        className="relative w-full h-[600px] flex items-center overflow-hidden"
+        className="relative w-full h-[640px] flex items-center overflow-hidden"
         style={{ background: "#2f4344" }}
       >
         {/* Background video */}
@@ -215,24 +215,29 @@ export default function HeroConceptPage() {
         {/* Wave overlay — organic edge blending dark left into video right */}
         <svg
           className="absolute inset-0 w-full h-full"
-          viewBox="0 0 1440 600"
+          viewBox="0 0 1440 640"
           preserveAspectRatio="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          {/* Main dark wave shape */}
+          {/* Main dark wave shape — S-curve right edge, ~50% width */}
           <path
-            d="M0,0 L820,0 C870,80 890,180 860,300 C830,420 790,480 760,600 L0,600 Z"
+            d="M0,0 L700,0 C720,60 750,150 730,250 C710,350 670,420 690,520 C700,570 710,610 720,640 L0,640 Z"
             fill="#2f4344"
           />
-          {/* Soft feather edge — subtle second layer for smooth blend */}
+          {/* Soft feather layer — blends edge into video */}
           <path
-            d="M820,0 C870,80 890,180 860,300 C830,420 790,480 760,600 L820,600 C860,480 900,420 930,300 C960,180 940,80 900,0 Z"
-            fill="rgba(47,67,68,0.55)"
+            d="M700,0 C720,60 750,150 730,250 C710,350 670,420 690,520 C700,570 710,610 720,640 L780,640 C768,610 758,570 748,520 C728,420 768,350 788,250 C808,150 778,60 758,0 Z"
+            fill="rgba(47,67,68,0.45)"
+          />
+          {/* Feather fade — outermost soft edge */}
+          <path
+            d="M758,0 C778,60 808,150 788,250 C768,350 728,420 748,520 C758,570 768,610 780,640 L840,640 C826,610 814,570 800,520 C776,420 816,350 838,250 C858,150 828,60 808,0 Z"
+            fill="rgba(47,67,68,0.18)"
           />
           {/* Decorative lasso curves */}
-          <path d="M-60,420 C120,360 280,480 400,380 C520,280 560,160 700,120" fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth="2.5" strokeLinecap="round"/>
-          <path d="M-40,520 C100,460 240,560 380,460 C500,370 580,220 740,180" fill="none" stroke="rgba(255,255,255,0.04)" strokeWidth="2" strokeLinecap="round"/>
-          <path d="M40,80 C160,120 260,60 360,140 C460,220 500,340 580,360" fill="none" stroke="rgba(171,156,109,0.12)" strokeWidth="2" strokeLinecap="round"/>
+          <path d="M-60,380 C80,320 220,440 360,340 C480,250 520,130 660,100" fill="none" stroke="rgba(255,255,255,0.07)" strokeWidth="2.5" strokeLinecap="round"/>
+          <path d="M-40,480 C80,420 200,510 340,420 C460,340 540,200 680,165" fill="none" stroke="rgba(255,255,255,0.04)" strokeWidth="2" strokeLinecap="round"/>
+          <path d="M30,60 C140,100 240,40 340,120 C440,200 480,310 560,340" fill="none" stroke="rgba(171,156,109,0.14)" strokeWidth="2" strokeLinecap="round"/>
         </svg>
 
         {/* Content — container matches header's container mx-auto px-4 for logo alignment */}
