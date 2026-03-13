@@ -10,7 +10,7 @@ export default function Header() {
     <header className="sticky top-0 z-50 bg-white shadow-sm">
       {/* Top eyebrow bar */}
       <div className="hidden lg:block border-b border-gray-100">
-        <div className="container mx-auto px-4">
+        <div className="w-full px-6 lg:px-8">
           <div className="flex justify-end items-center py-2">
             <nav className="flex items-center gap-4 text-sm">
               <button
@@ -82,7 +82,7 @@ export default function Header() {
       </div>
 
       {/* Main navigation */}
-      <nav className="container mx-auto px-4">
+      <nav className="w-full px-6 lg:px-8">
         <div className="flex items-center justify-between py-4">
           {/* Logo */}
           <Link href="/" className="flex-shrink-0">
